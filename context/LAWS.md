@@ -85,3 +85,26 @@ Extracted directly from official school logo (`public/images/hosanna-logo.png`):
 ## ⚖️ 9. Strategic Global Alignment (Sydney Hosanna Inc)
 - **International Engine**: Fully sustained and audited by **Sydney Hosanna Incorporated**, a registered Australian non-profit running regular short-term field initiatives (e.g. *Love Asia Youth Trip*).
 - **Audit Guarantee**: 100% transparent direct student support with 0% administrative waste policy.
+
+---
+
+## 🪜 10. LAZY DEV ARCHITECTURE (Mandatory Operating Law)
+
+### The 7-Rung Ponytail Ladder
+Ascend only when the rung below is mathematically proven insufficient:
+1. **Read & understand** the problem.
+2. **Reuse** an existing helper / component / content string.
+3. **Modify** the smallest file.
+4. **Add** a small utility function.
+5. **Create** one focused component.
+6. **Introduce** an abstraction.
+7. **Build** a system.
+
+### The Rules
+- **Ponytail Mode ON**: Deletion > Modification > Addition. New files = 0 by default.
+- **Bug Fix = Root Cause**: Never patch the symptom. Trace to the cause; if the pattern recurs, write a correction note.
+- **Zero AI Slop**: No filler sections, no generic stock copy, no invented facts about the school. Every claim must trace to this file or a verified source.
+- **One Accent Only**: Cerulean `#0099E5` is the single active accent; emerald `#27AE60` only for positive/success semantics. Navy `#002D62` is ink/base, never a decorative pop.
+- **Khmer First**: Bilingual copy must keep Khmer typography laws (no fake italics, line-height 1.75).
+- **Location Authority**: Christ's confirmed pin (Pou Senchey, lat 11.5651 / long 104.8514, `maps.app.goo.gl/CwM5fNPkbwsSCpiF6`) **supersedes** the older Mean Chey coords above. When asked "where is the school", cite Pou Senchey.
+

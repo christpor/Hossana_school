@@ -11,6 +11,7 @@
 ## 📌 Context File Map
 - **Agent Brain**: [`context/AGENT.md`](file:///home/christ/projects/hosanna-school/context/AGENT.md)
 - **Deep Reference**: [`context/LAWS.md`](file:///home/christ/projects/hosanna-school/context/LAWS.md)
+- **Identity Layer**: [`context/`](file:///home/christ/projects/hosanna-school/context) (USER, SOUL, IDENTITY, SKILL_INDEX, CONTEXT_ENGINEERING)
 - **Recreate Spec**: [`docs/recreate-prompt.md`](file:///home/christ/projects/hosanna-school/docs/recreate-prompt.md) (AI rebuild prompt)
 
 ## 🛠️ Stack & Commands

@@ -15,18 +15,20 @@
 1. Read `context/AGENT.md` for latest session handoff & state.
 2. If working on UI/branding → consult `context/LAWS.md` for MoEYS logo tokens and Khmer font rules.
 3. Run `npm run build` after editing code to verify zero TS errors.
+4. **Tripwire**: If a design/copy draft is weak (< 8/10) → load `pushback-engineer-christ` and iterate before showing Christ.
+5. **Tripwire**: If about to add a new file → load `context/SOUL.md` Ponytail rules and prove reuse failed first.
 
 ## 5. CURRENT STATE
-- **Branch**: `redesign` (new cream/navy editorial design, awaiting Christ approval to merge to `main`)
+- **Branch**: `redesign` — Full Tier 3 context layer added; next: fast-forward merge → `main` + Vercel deploy.
 - **Build Status**: `npm run build` PASSED (~3s, 0 TS errors) | Lint clean
 - **Remote**: `christpor/Hossana_school` (main + redesign pushed, commits visible)
 - **Assets**: Official logo (`public/images/hosanna-logo.png`), real school photos (`real-students-hero.jpg`, `real-assembly-campus.jpg` — sourced from sydneyhosanna.com.au/cambodia), AI placeholders still present (`hero.jpg`, `choir.jpg`, `teacher.jpg`). Branded `public/404.html`.
 - **Location (confirmed by Christ 2026-08-02)**: Pou Senchey District, Phnom Penh — Google pin `maps.app.goo.gl/CwM5fNPkbwsSCpiF6`, lat 11.5651 / long 104.8514. This supersedes LAWS.md's Mean Chey coords (11.5432, 104.8876).
 
 ## 6. NEXT TASKS
-1. Christ previews redesign → on approval, merge `redesign` → `main` + push.
-2. Deploy on Christ's explicit go (Vercel: `vercel --prod` + re-point alias + verify 200s).
-3. Keep `docs/recreate-prompt.md` synced with any future design system changes.
+1. Deploy to Vercel (`vercel --prod`, project `hosanna-school`) after merge + verify 200.
+2. Confirm site live with Christ; handle any post-launch fix.
+3. Keep `docs/recreate-prompt.md` + `context/` files synced with design system changes.
 
 ## 7. KEY FILES & UTILS
 - **Logo Asset**: [`public/images/hosanna-logo.png`](file:///home/christ/projects/hosanna-school/public/images/hosanna-logo.png)
@@ -35,6 +37,7 @@
 - **Scroll Motion Orchestrator**: [`src/ScrollEffects.tsx`](file:///home/christ/projects/hosanna-school/src/ScrollEffects.tsx) (Lenis golden-sync + GSAP, parallax/mask/marquee)
 - **Recreate Spec**: [`docs/recreate-prompt.md`](file:///home/christ/projects/hosanna-school/docs/recreate-prompt.md)
 - **Deep Reference**: [`context/LAWS.md`](file:///home/christ/projects/hosanna-school/context/LAWS.md)
+- **Context Layer**: [`context/`](file:///home/christ/projects/hosanna-school/context) — USER/SOUL/IDENTITY/SKILL_INDEX/CONTEXT_ENGINEERING (Tier 3). Audit: `token_audit.py`
 
 ## 8. RUN + PUSH & GIT SAFETY
 - **Verification**: `npm run build` + `npm run lint`
@@ -42,19 +45,9 @@
 - **Git Rollback**: `git log -n 5`, `git checkout <hash>`
 
 ## 9. LAST SESSION HANDOFF (2026-08-02)
-- **Built & Verified**:
-  - Git initialized for `christpor/Hossana_school` (was not a repo); baseline committed to `main`, pushed.
-  - Redesign branch `redesign`: rebuilt all 8 sections in cream/navy editorial style + branded 404.
-  - Added GSAP + ScrollEffects orchestrator (Lenis `syncTouch:false`, parallax ≥768px, mask reveals, velocity marquee).
-  - Cycle of Blessing → sticky cinematic scroll story (CSS sticky, mobile-safe, reduced-motion unsticks).
-  - Recreated `docs/recreate-prompt.md` in elite format.
-  - Verified `npm run build` green, lint clean, DOM checks pass, 4-width screenshots in `.shots/`.
-- **Location + copy + real photos (commit `8d95b5f`, pushed)**:
-  - Christ corrected location: **Pou Senchey, Phnom Penh** (`maps.app.goo.gl/CwM5fNPkbwsSCpiF6`, 11.5651, 104.8514). Updated `content.ts` EN/KH + `LocationHub.tsx` (map card now shows real campus photo + correct coords + Google Maps link).
-  - Light-trimmed long paragraphs across sections (kept all real facts: 800+, MoEYS, KESORRR, 2003).
-  - Added 2 real school photos (sydneyhosanna.com.au/cambodia) into Hero + LocationHub; AI placeholders kept in git history.
-  - Screenshots regenerated via Windows Chrome headless (`"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" --headless --screenshot=...`).
-- **Navbar compacted (uncommitted, `redesign`)**:
-  - Christ: navbar "looked too big". Applied Option A: pill `max-w-5xl→4xl`, logo `h-10→h-8`, dropped "Cambodian Children · Est. 2003" subtitle, nav links `text-sm→13px` tighter, buttons `h-10→h-8`, drawer top `72px→56px`. Build green. Dev server at `localhost:5173`.
-- **Next Session**: Load `context/AGENT.md` → dev server already running at `localhost:5173` → confirm navbar size with Christ → commit navbar change + push to `redesign` → wait for approval to merge `redesign` → `main`.
-- **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 1 compacted navbar / 0 unresolved bugs.
+- **Context layer → Tier 3 (commit `PENDING`)**: Wrote `context/USER.md`, `SOUL.md`, `IDENTITY.md`, `SKILL_INDEX.md`, `CONTEXT_ENGINEERING.md`; added `LAZY DEV ARCHITECTURE` to `context/LAWS.md`; injected Tripwire gates into Session Start. Audit clean. Merging `redesign` → `main` (fast-forward) then deploying to Vercel (`hosanna-school.vercel.app`).
+- **Navbar compacted (commit `22bae49`, pushed)**: pill `max-w-5xl→4xl`, logo `h-10→h-8`, dropped brand subtitle, nav links `13px` tighter, buttons `h-8`, drawer top `72→56px`. Build green.
+- **Location + copy + real photos (commit `8d95b5f`, pushed)**: Pou Senchey, Phnom Penh (`maps.app.goo.gl/CwM5fNPkbwsSCpiF6`, 11.5651, 104.8514) supersedes Mean Chey coords. Light-trimmed copy, added 2 real photos (Hero + LocationHub).
+- **Redesign build (commits `bd9e06b`..`55a0934`)**: all 8 sections in cream/navy editorial style + GSAP/Lenis motion + branded 404.
+- **Next Session**: Confirm Vercel URL live + 200s with Christ; then any post-launch polish.
+- **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 5 new context files (Tier 3, required by skill) / 0 unresolved bugs.
