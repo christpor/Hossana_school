@@ -114,6 +114,7 @@ export const CycleOfBlessing: React.FC<CycleOfBlessingProps> = ({ t, lang }) => 
                         alt="Hosanna School Graduate Teacher"
                         className="h-full w-full object-cover"
                         loading="lazy"
+                        data-mask-reveal
                       />
                       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-4 pt-14">
                         <div className="flex items-center gap-2 text-xs font-bold text-ink">

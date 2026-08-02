@@ -26,6 +26,7 @@ export const ChoirSpotlight: React.FC<ChoirSpotlightProps> = ({ t }) => {
                   alt="Hosanna School Choir Performance"
                   className="h-full w-full object-cover"
                   loading="lazy"
+                  data-mask-reveal
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-4 pt-16">
                   <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface px-3 py-1.5">

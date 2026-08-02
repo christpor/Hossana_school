@@ -63,6 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ t, onOpenDonate }) => {
                   loading="eager"
                   width={640}
                   height={800}
+                  data-parallax
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-5 pt-16">
                   <div className="flex items-center justify-between text-xs font-mono text-ink-soft">
