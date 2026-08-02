@@ -15,7 +15,7 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
       titleLine1: 'From Phnom Penh Slum to',
       titleHighlight: 'Generational Hope',
       titleLine2: '& Academic Excellence',
-      subtitle: 'Recognized by the Ministry of Education, Youth and Sport (MoEYS), Hosanna School equips over 800+ children from Early Childhood through Grade 12 with quality education, clean water, and a path to lead their community.',
+      subtitle: 'MoEYS-recognized since 2003, Hosanna School educates 800+ children from Early Childhood through Grade 12 — quality learning, clean water, and hope.',
       ctaDonate: 'Flatten Micro-Costs ($15/mo)',
       ctaStory: 'Discover Our Story',
       stats: {
@@ -32,30 +32,30 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     blessing: {
       badge: 'The Core Heartbeat of Hosanna',
       title: 'The Cycle of Blessing',
-      subtitle: 'Our greatest pride: early impoverished graduates who earned university degrees and returned as full-time certified teachers to train the next generation.',
+      subtitle: 'Our greatest pride: graduates who earned university degrees and returned as certified teachers.',
       steps: [
         {
           year: '2003 – 2006',
           title: 'Sombok Chab Beginnings',
-          description: 'Missionaries Manho Lim and Yongsoon Kim started teaching organically in a private home near Phnom Penh Royal Palace, serving displaced families in severe hardship.',
+          description: 'Missionaries Manho Lim and Yongsoon Kim began teaching in a private home near the Royal Palace, serving displaced families in hardship.',
           tag: 'Foundational Root',
         },
         {
           year: '2006 – Relocation',
           title: 'Permanent Mean Chey Campus',
-          description: 'Following Phnom Penh city redevelopments, the school moved together with its community to Andong / Mean Chey Village to build a permanent educational sanctuary.',
+          description: 'Following city redevelopments, the school moved with its community to Andong / Mean Chey Village to build a permanent sanctuary.',
           tag: 'Resilience & Growth',
         },
         {
           year: '2015 – 2022',
           title: 'Higher Education Degrees',
-          description: 'The first waves of Hosanna students completed Grade 12, entered universities across Cambodia, and graduated with honors in Education and Science.',
+          description: 'The first waves of Hosanna students finished Grade 12, entered universities across Cambodia, and graduated in Education and Science.',
           tag: 'Academic Victory',
         },
         {
           year: 'Present Day',
           title: 'Graduates Return as Teachers',
-          description: 'Today, Hosanna School alumni walk back into our classrooms not as students, but as full-time certified teachers leading 800+ children.',
+          description: 'Today, alumni walk back into our classrooms not as students, but as full-time certified teachers leading 800+ children.',
           tag: 'The Fulfilled Vision',
         },
       ],
@@ -63,35 +63,35 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     calculator: {
       badge: 'Direct Financial Impact',
       title: 'Flattening the Micro-Costs of Poverty',
-      subtitle: 'Public education lacks heavy tuition, but localized micro-costs (lesson printouts, clean water, uniforms, transportation) force children into manual labor. Your support eliminates these exact barriers.',
+      subtitle: 'Public education lacks heavy tuition, but micro-costs — printouts, clean water, uniforms, transport — force children into manual labor. Your support removes these exact barriers.',
       sliderLabel: 'Select Your Monthly Sponsorship Level',
       tiers: [
         {
           amount: 15,
           label: 'Micro-Supplies & Utilities',
-          description: 'Keeps one child supplied with printed learning workbooks, daily filtered drinking water, and school uniform items.',
+          description: 'Keeps one child supplied with printed workbooks, filtered drinking water, and uniform items.',
           items: ['Monthly lesson printouts', 'Clean filtered water supply', 'School uniform & shoes'],
         },
         {
           amount: 30,
           label: 'Full Pipeline Sponsorship',
-          description: 'Covers a student’s entire monthly educational micro-costs, academic mentoring, and nutritional support.',
+          description: 'Covers a student’s full monthly micro-costs, academic mentoring, and nutritional support.',
           items: ['Full learning materials & books', 'Nutritional school meal supplements', 'Daily transport assistance', 'Teacher salary fund'],
           featured: true,
         },
         {
           amount: 100,
           label: 'Arts, Choir & Campus Growth',
-          description: 'Funds musical instruments, choir travel, tech classroom upkeep, and community outreach programs.',
+          description: 'Funds instruments, choir travel, tech classroom upkeep, and community outreach.',
           items: ['Choir instruments & recording', 'Computer lab & print equipment', 'Specialized extracurriculars', 'Emergency family aid fund'],
         },
       ],
-      customPrompt: 'Every dollar goes directly toward student supplies and operational stability in Mean Chey.',
+      customPrompt: 'Every dollar goes directly toward student supplies and operational stability in Pou Senchey.',
     },
     choir: {
       badge: 'Student Voice & Cultural Pride',
       title: 'The Hosanna Student Choir',
-      subtitle: 'Renowned across Phnom Penh, our student choir performs locally and has been featured as backing vocalists for prominent Cambodian musical artists including KESORRR.',
+      subtitle: 'Renowned across Phnom Penh, our student choir performs locally and has backed prominent Cambodian artists including KESORRR.',
       featText: 'Featured in major national music campaigns & regional youth cultural festivals.',
       playerTitle: 'Songs of Hope & Heritage',
       nowPlaying: 'Track 01: Unity in Song (Live in Phnom Penh)',
@@ -104,9 +104,9 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     governance: {
       badge: 'Audited International Trust',
       title: 'Transparent Global Governance',
-      subtitle: 'Hosanna School is fully backed and sustained by Sydney Hosanna Incorporated, a registered Australian non-profit ensuring transparent fund management and audited field operations.',
+      subtitle: 'Hosanna School is backed by Sydney Hosanna Incorporated, a registered Australian non-profit ensuring transparent fund management and audited field operations.',
       australianPartner: 'Sydney Hosanna Incorporated (Australia)',
-      governanceText: 'International donors enjoy 100% peace of mind. Every contribution is strictly directed toward student micro-costs, classroom maintenance, and local teacher support.',
+      governanceText: 'Every contribution is strictly directed toward student micro-costs, classroom maintenance, and local teacher support.',
       points: [
         'Registered Australian Non-Profit Partnership',
         'Official MoEYS Educational Recognition',
@@ -117,13 +117,13 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     },
     location: {
       badge: 'Phnom Penh Footprint',
-      title: 'Visit Our Mean Chey Campus',
-      address: 'N° 665, Group 10, Mean Chey Village, Phnom Penh, Cambodia (Zip Code 12000)',
+      title: 'Visit Our Campus',
+      address: 'Pou Senchey District, Phnom Penh, Cambodia',
       historyTitle: 'Historical Journey',
       historyText: 'Originally established in 2003 near the Royal Palace (Sombok Chab), relocated permanently in 2006 to Mean Chey Village / Pochentong development quadrant.',
       phonesTitle: 'Official Contact Telephones',
       phones: ['+855 12 203 073', '+855 12 668 077'],
-      landmark: 'Pochentong / Mean Chey Development Quadrant',
+      landmark: 'Pou Senchey / Pochentong Zone',
     },
     footer: {
       tagline: 'Transforming poverty into purpose through education, generational recovery, and faith.',
@@ -145,7 +145,7 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
       titleLine1: 'ពីតំបន់ក្រីក្រក្នុងរាជធានីភ្នំពេញ ទៅកាន់',
       titleHighlight: 'ក្តីសង្ឃឹមជំនាន់ថ្មី',
       titleLine2: '& ការអប់រំដ៏ឆ្នើម',
-      subtitle: 'ទទួលស្គាល់ដោយក្រសួងអប់រំ យុវជន និងកីឡា សាលាហូសាណាបានបំពាក់បំប៉នសិស្សជាង ៨០០+ នាក់ ចាប់ពីកុមារតូច រហូតដល់ថ្នាក់ទី ១២ ជាមួយនឹងការអប់រំមានគុណភាព ទឹកស្អាត និងផ្លូវឆ្ពោះទៅកាន់ការដឹកនាំសហគមន៍។',
+      subtitle: 'ទទួលស្គាល់ដោយក្រសួងអប់រំ យុវជន និងកីឡា សាលាហូសាណាបានបំពាក់បំប៉នសិស្សជាង ៨០០+ នាក់ ចាប់ពីកុមារតូច រហូតដល់ថ្នាក់ទី ១២ ជាមួយនឹងការអប់រំមានគុណភាព ទឹកស្អាត និងក្តីសង្ឃឹម។',
       ctaDonate: 'កាត់បន្ថយចំណាយតូចៗ ($15/ខែ)',
       ctaStory: 'ស្វែងយល់ពីសាច់រឿងរបស់យើង',
       stats: {
@@ -162,7 +162,7 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     blessing: {
       badge: 'បេះដូងសំខាន់នៃហូសាណា',
       title: 'វដ្តនៃពរជ័យ (Cycle of Blessing)',
-      subtitle: 'មោទនភាពដ៏ធំបំផុតរបស់យើង៖ អតីតសិស្សក្រីក្រដែលបានបញ្ចប់ការសិក្សានៅសាកលវិទ្យាល័យ ហើយបានត្រឡប់មកធ្វើជាគ្រូបង្រៀនពេញម៉ោង ដើម្បីបណ្តុះបណ្តាលជំនាន់ក្រោយ។',
+      subtitle: 'មោទនភាពដ៏ធំបំផុតរបស់យើង៖ អតីតសិស្សក្រីក្រដែលបានបញ្ចប់ការសិក្សានៅសាកលវិទ្យាល័យ ហើយបានត្រឡប់មកធ្វើជាគ្រូបង្រៀនពេញម៉ោង។',
       steps: [
         {
           year: '២០០៣ – ២០០៦',
@@ -236,7 +236,7 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
       title: 'ការគ្រប់គ្រងប្រកបដោយតម្លាភាព',
       subtitle: 'សាលាហូសាណាត្រូវបានគាំទ្រពេញលេញដោយ Sydney Hosanna Incorporated ដែលជាអង្គការមិនស្វែងរកប្រាក់ចំណេញចុះបញ្ជីនៅអូស្ត្រាលី។',
       australianPartner: 'Sydney Hosanna Incorporated (Australia)',
-      governanceText: 'ម្ចាស់ជំនួយអន្តរជាតិមានទំនុកចិត្ត ១០០%។ រាល់ការបរិច្ចាគត្រូវបានប្រើប្រាស់យ៉ាងម៉ត់ចត់លើសិស្សានុសិស្ស ការថែទាំថ្នាក់រៀន និងគ្រូបង្រៀន។',
+      governanceText: 'រាល់ការបរិច្ចាគត្រូវបានប្រើប្រាស់យ៉ាងម៉ត់ចត់លើសិស្សានុសិស្ស ការថែទាំថ្នាក់រៀន និងគ្រូបង្រៀន។',
       points: [
         'ដៃគូអង្គការចុះបញ្ជីនៅប្រទេសអូស្ត្រាលី',
         'ទទួលស្គាល់ផ្លូវការដោយក្រសួងអប់រំ យុវជន និងកីឡា',
@@ -247,13 +247,13 @@ export const content: Record<'en' | 'kh', TranslationContent> = {
     },
     location: {
       badge: 'ទីតាំងនៅភ្នំពេញ',
-      title: 'អញ្ជើញមកទស្សនាទីតាំងសាលានៅភូមិមានជ័យ',
-      address: 'ផ្ទះលេខ ៦៦៥ ក្រុមទី ១០ ភូមិមានជ័យ ខណ្ឌមានជ័យ រាជធានីភ្នំពេញ (កូដប្រពៃណី ១២០០០)',
+      title: 'អញ្ជើញមកទស្សនាទីតាំងសាលានៅពោធិ៍សែនជ័យ',
+      address: 'ខណ្ឌពោធិ៍សែនជ័យ រាជធានីភ្នំពេញ កម្ពុជា',
       historyTitle: 'ប្រវត្តិសង្ខេប',
       historyText: 'បង្កើតឡើងដំបូងក្នុងឆ្នាំ ២០០៣ ក្បែរព្រះបរមរាជវាំង (សំបុកចាប) ហើយបានផ្លាស់ប្តូរទីតាំងជាអចិន្ត្រៃយ៍ក្នុងឆ្នាំ ២០០៦ មកកាន់ខណ្ឌមានជ័យ / ពោធិ៍ចិនតុង។',
       phonesTitle: 'លេខទូរស័ព្ទទំនាក់ទំនងផ្លូវការ',
       phones: ['+855 12 203 073', '+855 12 668 077'],
-      landmark: 'តំបន់អភិវឌ្ឍន៍ពោធិ៍ចិនតុង / មានជ័យ',
+      landmark: 'តំបន់ពោធិ៍សែនជ័យ / ពោធិ៍ចិនតុង',
     },
     footer: {
       tagline: 'ផ្លាស់ប្តូរភាពក្រីក្រទៅជាគោលបំណង តាមរយៈការអប់រំ ការស្តារឡើងវិញនូវជំនាន់ និងជំនឿ។',

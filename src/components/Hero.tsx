@@ -57,17 +57,17 @@ export const Hero: React.FC<HeroProps> = ({ t, onOpenDonate }) => {
               <div className="absolute -inset-3 rounded-[2rem] border border-accent/20" />
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line bg-surface">
                 <img
-                  src="/images/hero.jpg"
-                  alt="Hosanna School Students in Phnom Penh"
+                  src="/images/real-students-hero.jpg"
+                  alt="Hosanna School students with teachers in Phnom Penh"
                   className="h-full w-full object-cover"
                   loading="eager"
-                  width={640}
-                  height={800}
+                  width={1350}
+                  height={900}
                   data-parallax
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-5 pt-16">
                   <div className="flex items-center justify-between text-xs font-mono text-ink-soft">
-                    <span>Phnom Penh · Mean Chey</span>
+                    <span>Phnom Penh · Pou Senchey</span>
                     <span>Est. 2003</span>
                   </div>
                 </div>

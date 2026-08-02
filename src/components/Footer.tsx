@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
     'Phnom Penh, Cambodia',
     '800+ Students (ECE to Grade 12)',
     'Founded 2003 in Sombok Chab',
-    'Mean Chey Village',
+    'Pou Senchey, Phnom Penh',
     'Sydney Hosanna Inc Partner',
   ];
 

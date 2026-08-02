@@ -53,7 +53,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({ isOpen, onClose, lang 
           </h3>
           <p className="mt-1 text-xs text-muted">
             {lang === 'en'
-              ? 'Flatten micro-costs of printing, uniforms & water in Mean Chey'
+              ? 'Flatten micro-costs of printing, uniforms & water in Pou Senchey'
               : 'លុបបំបាត់ចំណាយតូចៗលើឯកសណ្ឋាន ទឹកស្អាត និងសន្លឹកកិច្ចការ'}
           </p>
         </div>

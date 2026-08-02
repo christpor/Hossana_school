@@ -18,7 +18,7 @@ export const LocationHub: React.FC<LocationHubProps> = ({ t }) => {
           </div>
           <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-ink sm:text-5xl">
             {t.title}{' '}
-            <span className="font-display accent-underline">Mean Chey</span>
+            <span className="font-display accent-underline">Pou Senchey</span>
           </h2>
           <p className="mt-4 text-base text-ink-soft sm:text-lg">{t.address}</p>
         </div>
@@ -78,12 +78,19 @@ export const LocationHub: React.FC<LocationHubProps> = ({ t }) => {
           {/* Right — map visual */}
           <div className="lg:col-span-6">
             <div className="editorial-card flex h-full flex-col p-4">
-              <div className="relative flex h-80 flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:h-96">
-                {/* grid lines */}
-                <div className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,#E4DDD1_1px,transparent_1px),linear-gradient(to_bottom,#E4DDD1_1px,transparent_1px)] [background-size:2rem_2rem]" />
+              <div className="relative flex h-80 flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface sm:h-96">
+                <img
+                  src="/images/real-assembly-campus.jpg"
+                  alt="Hosanna School campus in Pou Senchey, Phnom Penh"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                  width={1203}
+                  height={900}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep/80 via-deep/20 to-transparent" />
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="eyebrow rounded-full border border-line bg-surface px-3 py-1.5 text-ink">
-                    Phnom Penh · Mean Chey 12000
+                  <span className="eyebrow rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-white backdrop-blur-sm">
+                    Phnom Penh · Pou Senchey 12000
                   </span>
                   <span className="relative flex h-3 w-3">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
@@ -92,28 +99,28 @@ export const LocationHub: React.FC<LocationHubProps> = ({ t }) => {
                 </div>
 
                 <div className="relative z-10 my-auto text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-sm">
                     <MapPin className="h-8 w-8" />
                   </div>
-                  <h4 className="text-xl font-bold text-ink">Hosanna School Campus</h4>
-                  <p className="eyebrow mt-1 text-accent">N° 665, Group 10, Mean Chey Village</p>
+                  <h4 className="text-xl font-bold text-white">Hosanna School Campus</h4>
+                  <p className="eyebrow mt-1 text-white/80">Pou Senchey, Phnom Penh</p>
                 </div>
 
-                <div className="relative z-10 flex items-center justify-between border-t border-line pt-4 font-mono text-[11px] text-muted">
-                  <span>Lat 11.5432° N</span>
-                  <span>Long 104.8876° E</span>
-                  <span>Pochentong Zone</span>
+                <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 font-mono text-[11px] text-white/70">
+                  <span>Lat 11.5651° N</span>
+                  <span>Long 104.8514° E</span>
+                  <span>Pou Senchey Zone</span>
                 </div>
               </div>
 
               <div className="p-4 text-center">
                 <a
-                  href="https://www.google.com/search?kgmid=/g/11c1sk9blk"
+                  href="https://maps.app.goo.gl/CwM5fNPkbwsSCpiF6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-mono text-xs text-accent transition-colors hover:text-deep"
                 >
-                  Open official Google map directory tag
+                  Open in Google Maps
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </div>

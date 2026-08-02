@@ -96,7 +96,7 @@ export const ImpactCalculator: React.FC<ImpactCalculatorProps> = ({ t, onOpenDon
             <span className="eyebrow mb-1 block text-accent">Active sponsorship selection</span>
             <p className="text-sm font-medium text-ink">
               ${activeTier.amount}/month directly guarantees{' '}
-              {activeTier.label.toLowerCase()} for Hosanna children in Mean Chey.
+              {activeTier.label.toLowerCase()} for Hosanna children in Pou Senchey.
             </p>
           </div>
           <button

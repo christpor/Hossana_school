@@ -16,7 +16,7 @@ function readInitialLang(): Language {
   try {
     const stored = localStorage.getItem('hosanna-lang');
     if (stored === 'kh' || stored === 'en') return stored;
-  } catch (e) {
+  } catch {
     /* ignore */
   }
   const nav = document.documentElement.getAttribute('data-lang');
@@ -33,7 +33,7 @@ export function App() {
     document.documentElement.lang = newLang;
     try {
       localStorage.setItem('hosanna-lang', newLang);
-    } catch (e) {
+    } catch {
       /* ignore */
     }
   };
