@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-khmer: 'Kantumruy Pro', 'Noto Sans Khmer', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Decompiled Official Logo Brand Colors */
+    --color-navy: #002D62;
+    --color-cerulean: #0099E5;
+    --color-sky: #46B2E6;
+    --color-emerald: #27AE60;
+    --color-lime-gold: #E2DB14;
+    --color-bg: #060B14;
+    --color-card: rgba(12, 23, 38, 0.8);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: #F1F5F9;
+  }
+
+  /* Khmer Typography Override */
+  html[data-lang="kh"] body {
+    font-family: var(--font-khmer);
+    line-height: 1.75 !important;
+  }
+
+  html[data-lang="kh"] .font-serif,
+  html[data-lang="kh"] h1,
+  html[data-lang="kh"] h2,
+  html[data-lang="kh"] h3 {
+    font-family: var(--font-khmer) !important;
+    font-style: normal !important;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Glassmorphism utility with Cerulean Blue highlight */
+.glass-card {
+  background: rgba(12, 23, 38, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 153, 229, 0.2);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(0, 153, 229, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 153, 229, 0.25);
+}
+
+/* Custom Cerulean Glow */
+.cerulean-glow {
+  background: radial-gradient(circle, rgba(0, 153, 229, 0.2) 0%, rgba(6, 11, 20, 0) 70%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
