@@ -1,103 +1,161 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { TranslationContent } from '../types';
-import { Sparkles, Award, HeartHandshake } from 'lucide-react';
+import { Award, HeartHandshake } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface CycleOfBlessingProps {
   t: TranslationContent['blessing'];
+  lang: string;
 }
 
-export const CycleOfBlessing: React.FC<CycleOfBlessingProps> = ({ t }) => {
-  return (
-    <section id="blessing" className="py-24 relative overflow-hidden bg-[#060B14]/80 border-t border-[#0099E5]/15">
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0099E5]/10 border border-[#0099E5]/30 text-[#0099E5] text-xs font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.badge}</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100 mb-6">
-            {t.title}
-          </h2>
-          <p className="text-slate-300 text-lg leading-relaxed font-sans">
-            {t.subtitle}
-          </p>
-        </div>
+export const CycleOfBlessing: React.FC<CycleOfBlessingProps> = ({ t, lang }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const stageRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-        {/* Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Timeline Cards (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            {t.steps.map((step, idx) => (
-              <div
-                key={idx}
-                className="glass-card p-6 rounded-2xl border border-[#0099E5]/20 glass-card-hover group relative overflow-hidden"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#0099E5]/15 border border-[#0099E5]/30 flex items-center justify-center text-[#0099E5] font-mono font-bold shrink-0">
-                    0{idx + 1}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                      <span className="text-xs font-mono text-[#46B2E6] px-2.5 py-0.5 rounded bg-[#0099E5]/10 border border-[#0099E5]/20">
-                        {step.year}
-                      </span>
-                      <span className="text-xs font-mono text-[#27AE60]">
-                        {step.tag}
-                      </span>
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      if (!section) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const stages = stageRefs.current.filter(Boolean) as HTMLDivElement[];
+      if (stages.length < 2) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.5,
+        },
+        defaults: { ease: 'power2.out' },
+      });
+
+      stages.forEach((stage, i) => {
+        const unit = i;
+        if (i > 0) {
+          tl.fromTo(stage, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25 }, unit);
+        }
+        if (i < stages.length - 1) {
+          tl.to(stage, { autoAlpha: 0, ease: 'power2.in', duration: 0.25 }, unit + 0.55);
+        }
+      });
+
+      const counter = section.querySelector('[data-cinematic-counter]');
+      const line = section.querySelector('[data-cinematic-line]');
+      const counterObj = { n: 1 };
+      tl.to(
+        counterObj,
+        {
+          n: stages.length,
+          duration: stages.length - 1,
+          ease: 'none',
+          onUpdate: () => {
+            if (counter) counter.textContent = String(Math.round(counterObj.n)).padStart(2, '0');
+          },
+        },
+        0,
+      );
+      if (line) {
+        tl.fromTo(
+          line,
+          { scaleX: 0 },
+          { scaleX: 1, duration: stages.length - 1, ease: 'none' },
+          0,
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [lang, t.steps]);
+
+  const stages = t.steps;
+
+  return (
+    <section id="blessing" ref={sectionRef} data-cinematic className="relative bg-paper">
+      <div data-cinematic-pin className="flex items-center bg-paper">
+        {/* Stages */}
+        {stages.map((step, idx) => (
+          <div
+            key={`${lang}-${idx}`}
+            ref={(el) => {
+              stageRefs.current[idx] = el;
+            }}
+            className="c-stage flex items-center"
+            data-stage
+          >
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+              <div className="lg:col-span-7">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="eyebrow text-accent">0{idx + 1}</span>
+                  <span className="h-px w-10 bg-accent/40" />
+                  <span className="eyebrow text-muted">{step.year}</span>
+                </div>
+                <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-ink sm:text-5xl lg:text-6xl">
+                  {step.title}
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
+                  {step.description}
+                </p>
+                <span className="mt-7 inline-flex items-center rounded-full border border-emerald/30 bg-emerald/5 px-3.5 py-1.5">
+                  <span className="eyebrow text-emerald">{step.tag}</span>
+                </span>
+              </div>
+              <div className="hidden lg:col-span-5 lg:block">
+                {idx === stages.length - 1 ? (
+                  <div className="relative mx-auto max-w-sm">
+                    <div className="absolute -inset-3 rounded-[2rem] border border-accent/20" />
+                    <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-line bg-surface">
+                      <img
+                        src="/images/teacher.jpg"
+                        alt="Hosanna School Graduate Teacher"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-4 pt-14">
+                        <div className="flex items-center gap-2 text-xs font-bold text-ink">
+                          <Award className="h-4 w-4 text-emerald" />
+                          <span className="font-mono uppercase tracking-wider">
+                            Graduates → Certified Teachers
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-100 group-hover:text-[#0099E5] transition-colors mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-slate-300 leading-relaxed">
-                      {step.description}
+                  </div>
+                ) : (
+                  <div className="mx-auto flex max-w-sm flex-col items-center text-center">
+                    <div className="flex h-28 w-28 items-center justify-center rounded-full border border-accent/30 bg-accent/5">
+                      <span className="font-display text-5xl text-accent">0{idx + 1}</span>
+                    </div>
+                    <p className="mt-6 font-display text-2xl text-ink-soft">
+                      {idx === 0 ? 'Every story has a root' : 'Growth is a journey'}
                     </p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Teacher Image & Story Spotlight (5 cols) */}
-          <div className="lg:col-span-5">
-            <div className="glass-card rounded-3xl p-4 border border-[#0099E5]/30 shadow-2xl relative bg-[#0D1B2A]/90">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-slate-900">
-                <img
-                  src="/images/teacher.jpg"
-                  alt="Hosanna School Graduate Teacher"
-                  className="w-full h-full object-cover filter contrast-105 hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060B14] via-transparent to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#060B14]/90 text-[#46B2E6] text-xs font-mono border border-[#0099E5]/40">
-                    <Award className="w-3.5 h-3.5 text-[#27AE60]" />
-                    <span>Graduates → Certified Teachers</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-2 space-y-3">
-                <div className="flex items-center gap-2 text-[#0099E5] font-semibold text-sm">
-                  <HeartHandshake className="w-4 h-4 text-[#27AE60]" />
-                  <span>Generational Recovery in Action</span>
-                </div>
-                <p className="text-sm text-slate-300 leading-relaxed font-sans">
-                  "I was taught here in 2005 when we had no permanent building. Hosanna funded my education and university tuition. Returning here as a teacher is my life’s highest purpose."
-                </p>
-                <div className="pt-2 border-t border-[#0099E5]/15 flex items-center justify-between text-xs text-slate-400 font-mono">
-                  <span>Hosanna Alumni Association</span>
-                  <span>Mean Chey, Phnom Penh</span>
-                </div>
+                )}
               </div>
             </div>
           </div>
+        ))}
 
+        {/* Progress UI */}
+        <div className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-4">
+          <span className="eyebrow text-muted">01</span>
+          <span
+            data-cinematic-line
+            className="h-px w-20 origin-left bg-accent sm:w-32"
+          />
+          <span data-cinematic-counter className="eyebrow text-muted">
+            {String(stages.length).padStart(2, '0')}
+          </span>
         </div>
 
+        <div className="pointer-events-none absolute left-6 top-8 hidden items-center gap-2 sm:flex">
+          <HeartHandshake className="h-4 w-4 text-accent" />
+          <span className="eyebrow text-muted">{t.badge}</span>
+        </div>
       </div>
     </section>
   );
