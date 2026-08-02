@@ -1,32 +1,40 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-sans: 'Inter', sans-serif;
-    --font-serif: 'Instrument Serif', Georgia, serif;
-    --font-khmer: 'Kantumruy Pro', 'Noto Sans Khmer', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+@theme {
+  /* Editorial light palette (brand tokens inverted to cream + navy ink) */
+  --color-paper: #FAF7F2;
+  --color-surface: #FFFFFF;
+  --color-ink: #002D62;
+  --color-ink-soft: #33527A;
+  --color-muted: #5A6B82;
+  --color-line: #E4DDD1;
+  --color-accent: #0099E5;
+  --color-sky: #46B2E6;
+  --color-emerald: #27AE60;
+  --color-gold: #E2DB14;
+  --color-deep: #001C3D;
 
-    /* Decompiled Official Logo Brand Colors */
-    --color-navy: #002D62;
-    --color-cerulean: #0099E5;
-    --color-sky: #46B2E6;
-    --color-emerald: #27AE60;
-    --color-lime-gold: #E2DB14;
-    --color-bg: #060B14;
-    --color-card: rgba(12, 23, 38, 0.8);
+  --font-sans: 'Inter', 'Kantumruy Pro', 'Noto Sans Khmer', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Noto Sans Khmer', monospace;
+  --font-khmer: 'Kantumruy Pro', 'Noto Sans Khmer', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-bg);
-    color: #F1F5F9;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
   }
 
-  /* Khmer Typography Override */
+  /* Khmer typography override — no faux italics, room for vowel marks */
   html[data-lang="kh"] body {
     font-family: var(--font-khmer);
-    line-height: 1.75 !important;
+    line-height: 1.75;
   }
 
   html[data-lang="kh"] .font-serif,
@@ -36,46 +44,86 @@
     font-family: var(--font-khmer) !important;
     font-style: normal !important;
   }
+
+  html[data-lang="kh"] .font-mono {
+    font-family: var(--font-khmer) !important;
+    font-style: normal !important;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
 }
 
-.font-serif {
+/* Serif-italic accent helper */
+.font-display {
   font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
 }
 
-.font-mono {
+/* Mono eyebrow labels */
+.eyebrow {
   font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-/* Glassmorphism utility with Cerulean Blue highlight */
-.glass-card {
-  background: rgba(12, 23, 38, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 153, 229, 0.2);
+/* Hairline editorial card */
+.editorial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card-hover:hover {
+.editorial-card-hover:hover {
   border-color: rgba(0, 153, 229, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(0, 153, 229, 0.25);
+  box-shadow: 0 16px 40px -20px rgba(0, 45, 98, 0.25);
 }
 
-/* Custom Cerulean Glow */
-.cerulean-glow {
-  background: radial-gradient(circle, rgba(0, 153, 229, 0.2) 0%, rgba(6, 11, 20, 0) 70%);
+/* Cerulean accent underline for the italic word */
+.accent-underline {
+  background-image: linear-gradient(transparent 62%, rgba(0, 153, 229, 0.22) 62%);
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Scroll-down hint */
+@keyframes scroll-hint {
+  0% { transform: translateY(0); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: translateY(18px); opacity: 0; }
 }
 
-.animate-marquee {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 30s linear infinite;
+.animate-scroll-hint {
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+/* Film grain overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reduced motion: kill all decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
