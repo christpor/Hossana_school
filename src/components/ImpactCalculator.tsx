@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { TranslationContent } from '../types';
-import { Sparkles, CheckCircle2, Heart, DollarSign } from 'lucide-react';
+import { CheckCircle2, Heart } from 'lucide-react';
 
 interface ImpactCalculatorProps {
   t: TranslationContent['calculator'];
@@ -13,26 +13,24 @@ export const ImpactCalculator: React.FC<ImpactCalculatorProps> = ({ t, onOpenDon
   const activeTier = t.tiers[selectedTierIndex];
 
   return (
-    <section id="impact" className="py-24 relative bg-[#060B14] border-t border-[#0099E5]/15">
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0099E5]/10 border border-[#0099E5]/30 text-[#0099E5] text-xs font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.badge}</span>
+    <section id="impact" className="relative border-t border-line bg-surface py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <div className="mb-4 inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-3.5 py-1.5">
+            <span className="eyebrow text-accent">{t.badge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100 mb-6">
-            {t.title}
+          <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-ink sm:text-5xl">
+            {t.title}{' '}
+            <span className="font-display accent-underline">${activeTier.amount}</span>
           </h2>
-          <p className="text-slate-300 text-lg leading-relaxed font-sans">
+          <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
             {t.subtitle}
           </p>
         </div>
 
-        {/* Interactive Tier Switcher Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Tier cards */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {t.tiers.map((tier, idx) => {
             const isSelected = selectedTierIndex === idx;
 
@@ -40,40 +38,35 @@ export const ImpactCalculator: React.FC<ImpactCalculatorProps> = ({ t, onOpenDon
               <div
                 key={idx}
                 onClick={() => setSelectedTierIndex(idx)}
-                className={`cursor-pointer rounded-3xl p-8 transition-all duration-300 relative border ${
+                className={`editorial-card cursor-pointer p-7 ${
                   isSelected
-                    ? 'bg-[#0D1B2A] border-[#0099E5] shadow-2xl shadow-[#0099E5]/25 scale-[1.02]'
-                    : 'glass-card border-[#0099E5]/20 hover:border-[#0099E5]/50 opacity-85 hover:opacity-100'
+                    ? 'border-accent shadow-xl shadow-[#002D62]/8 ring-1 ring-accent/30'
+                    : 'editorial-card-hover opacity-85 hover:opacity-100'
                 }`}
               >
                 {tier.featured && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#0099E5] to-[#002D62] text-white font-bold text-xs uppercase tracking-wider shadow-md border border-[#0099E5]/40">
-                    Most Vital Sponsorship
+                  <div className="mb-5 inline-flex rounded-full bg-deep px-3 py-1">
+                    <span className="eyebrow text-white">Most vital sponsorship</span>
                   </div>
                 )}
 
-                <div className="flex items-baseline justify-between mb-6">
-                  <div>
-                    <span className="text-4xl sm:text-5xl font-mono font-bold text-[#0099E5]">
-                      ${tier.amount}
-                    </span>
-                    <span className="text-slate-400 text-sm font-mono"> / month</span>
-                  </div>
-                  <div className="w-8 h-8 rounded-full border border-[#0099E5]/30 flex items-center justify-center">
-                    <DollarSign className={`w-4 h-4 ${isSelected ? 'text-[#0099E5]' : 'text-slate-500'}`} />
-                  </div>
+                <div className="mb-4 flex items-baseline gap-1">
+                  <span className="font-mono text-5xl font-bold tracking-tight text-ink">
+                    ${tier.amount}
+                  </span>
+                  <span className="font-mono text-sm text-muted">/ month</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-100 mb-3">{tier.label}</h3>
-                <p className="text-sm text-slate-300 mb-6 leading-relaxed min-h-[60px]">
+                <h3 className="text-xl font-bold text-ink">{tier.label}</h3>
+                <p className="mt-2 min-h-[64px] text-sm leading-relaxed text-ink-soft">
                   {tier.description}
                 </p>
 
-                <div className="space-y-3 pt-6 border-t border-[#0099E5]/15">
+                <div className="mt-6 space-y-2.5 border-t border-line pt-6">
                   {tier.items.map((item, itemIdx) => (
-                    <div key={itemIdx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                      <CheckCircle2 className="w-4 h-4 text-[#27AE60] shrink-0 mt-0.5" />
-                      <span>{item}</span>
+                    <div key={itemIdx} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
+                      <span className="text-sm text-ink-soft">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -83,38 +76,36 @@ export const ImpactCalculator: React.FC<ImpactCalculatorProps> = ({ t, onOpenDon
                     e.stopPropagation();
                     onOpenDonate();
                   }}
-                  className={`w-full mt-8 py-3 rounded-full font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
+                  className={`mt-7 flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-bold transition-all ${
                     isSelected
-                      ? 'bg-gradient-to-r from-[#0099E5] to-[#002D62] text-white hover:from-[#46B2E6] hover:to-[#0099E5] shadow-lg shadow-[#0099E5]/25 border border-[#0099E5]/40'
-                      : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700'
+                      ? 'bg-deep text-white hover:bg-accent'
+                      : 'border border-line bg-paper text-ink hover:border-accent hover:text-accent'
                   }`}
                 >
-                  <Heart className="w-4 h-4 fill-current" />
-                  <span>Sponsor ${tier.amount}/mo</span>
+                  <Heart className="h-4 w-4 fill-current" />
+                  Sponsor ${tier.amount}/mo
                 </button>
               </div>
             );
           })}
         </div>
 
-        {/* Live Calculation Banner */}
-        <div className="glass-card rounded-2xl p-6 border border-[#0099E5]/30 text-center max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D1B2A]/90">
-          <div className="text-left">
-            <span className="text-xs font-mono text-[#0099E5] uppercase tracking-widest block mb-1">
-              Active Sponsorship Selection
-            </span>
-            <p className="text-sm font-medium text-slate-200">
-              ${activeTier.amount}/month directly guarantees {activeTier.label.toLowerCase()} for Hosanna children in Mean Chey.
+        {/* Live confirmation bar */}
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center justify-between gap-4 rounded-2xl border border-line bg-paper p-6 sm:flex-row">
+          <div>
+            <span className="eyebrow mb-1 block text-accent">Active sponsorship selection</span>
+            <p className="text-sm font-medium text-ink">
+              ${activeTier.amount}/month directly guarantees{' '}
+              {activeTier.label.toLowerCase()} for Hosanna children in Mean Chey.
             </p>
           </div>
           <button
             onClick={onOpenDonate}
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-[#0099E5] to-[#002D62] hover:from-[#46B2E6] hover:to-[#0099E5] text-white font-bold text-xs uppercase tracking-wider whitespace-nowrap shadow-lg shadow-[#0099E5]/20 border border-[#0099E5]/40"
+            className="h-11 shrink-0 whitespace-nowrap rounded-full bg-deep px-6 text-sm font-bold text-white transition-colors hover:bg-accent"
           >
             Confirm ${activeTier.amount} Gift
           </button>
         </div>
-
       </div>
     </section>
   );
