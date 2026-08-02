@@ -11,4 +11,10 @@
 ## 📌 Context File Map
 - **Agent Brain**: [`context/AGENT.md`](file:///home/christ/projects/hosanna-school/context/AGENT.md)
 - **Deep Reference**: [`context/LAWS.md`](file:///home/christ/projects/hosanna-school/context/LAWS.md)
-- **Recreate Spec**: [`docs/recreate-prompt.md`](file:///home/christ/projects/hosanna-school/docs/recreate-prompt.md)
+- **Recreate Spec**: [`docs/recreate-prompt.md`](file:///home/christ/projects/hosanna-school/docs/recreate-prompt.md) (AI rebuild prompt)
+
+## 🛠️ Stack & Commands
+- **Stack**: React + Vite + Tailwind CSS v4 + TypeScript + GSAP + Lenis + Lucide
+- **Build Verification**: `npm run build` and `npm run lint`
+- **Dev Preview**: `npx vite preview --port 3000`
+- **Remote**: `https://github.com/christpor/Hossana_school` (default branch: `main`; design work on `redesign`)

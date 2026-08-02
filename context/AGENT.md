@@ -1,11 +1,11 @@
 # AGENT.md — Hosanna School Agent Brain
 
 ## 1. PROJECT IDENTIFIER
-- **Project**: Hosanna School for Cambodian Children Landing Page | **Stack**: React + Vite + Tailwind v4 + TS + Lenis | **Status**: Production Preview Active
+- **Project**: Hosanna School for Cambodian Children Landing Page | **Stack**: React + Vite + Tailwind v4 + TS + GSAP + Lenis | **Status**: Redesign (branch `redesign`) ready for review
 
 ## 2. WHO YOU ARE
 - **Persona**: Sovereign Cambodian Web Engineer + Senior Designer.
-- **Hard Rules**: Zero AI slop. Strict MoEYS brand colors (`#002D62` Navy, `#0099E5` Cerulean, `#27AE60` Emerald). Mobile-first 320px responsive floor. Lenis `syncTouch: false`.
+- **Hard Rules**: Zero AI slop. Strict MoEYS brand tokens (`#002D62` Navy ink, `#0099E5` Cerulean accent, `#27AE60` Emerald semantics only). Mobile-first 320px responsive floor. Lenis `syncTouch: false`. One accent only.
 
 ## 3. WHO THE DEVELOPER IS
 - **Developer**: Christ (Cambodian tech lead).
@@ -17,34 +17,36 @@
 3. Run `npm run build` after editing code to verify zero TS errors.
 
 ## 5. CURRENT STATE
-- **Branch**: `main`
-- **Build Status**: `npm run build` PASSED (1.12s, 0 TS errors)
-- **Active Server**: Vite Preview running at `http://localhost:3000`
-- **Assets**: Official logo (`public/images/hosanna-logo.png`), hero (`hero.jpg`), choir (`choir.jpg`), teacher (`teacher.jpg`).
+- **Branch**: `redesign` (new cream/navy editorial design, awaiting Christ approval to merge to `main`)
+- **Build Status**: `npm run build` PASSED (~1s, 0 TS errors) | Lint clean
+- **Remote**: `christpor/Hossana_school` (main + redesign pushed, commits visible)
+- **Assets**: Official logo (`public/images/hosanna-logo.png`), hero (`hero.jpg`), choir (`choir.jpg`), teacher (`teacher.jpg`). Branded `public/404.html`.
 
 ## 6. NEXT TASKS
-1. Maintain bilingual EN/KH content dictionary in `src/data/content.ts`.
-2. Add interactive photo lightbox for student choir & campus gallery if requested.
+1. Christ previews redesign → on approval, merge `redesign` → `main` + push.
+2. Deploy on Christ's explicit go (Vercel: `vercel --prod` + re-point alias + verify 200s).
 3. Keep `docs/recreate-prompt.md` synced with any future design system changes.
 
 ## 7. KEY FILES & UTILS
 - **Logo Asset**: [`public/images/hosanna-logo.png`](file:///home/christ/projects/hosanna-school/public/images/hosanna-logo.png)
 - **Content Dictionary**: [`src/data/content.ts`](file:///home/christ/projects/hosanna-school/src/data/content.ts)
-- **Brand CSS Tokens**: [`src/index.css`](file:///home/christ/projects/hosanna-school/src/index.css)
+- **Design System CSS**: [`src/index.css`](file:///home/christ/projects/hosanna-school/src/index.css) (cream editorial tokens, sticky cinematic CSS, grain, reduced-motion)
+- **Scroll Motion Orchestrator**: [`src/ScrollEffects.tsx`](file:///home/christ/projects/hosanna-school/src/ScrollEffects.tsx) (Lenis golden-sync + GSAP, parallax/mask/marquee)
 - **Recreate Spec**: [`docs/recreate-prompt.md`](file:///home/christ/projects/hosanna-school/docs/recreate-prompt.md)
 - **Deep Reference**: [`context/LAWS.md`](file:///home/christ/projects/hosanna-school/context/LAWS.md)
 
 ## 8. RUN + PUSH & GIT SAFETY
-- **Verification**: `npm run build`
+- **Verification**: `npm run build` + `npm run lint`
 - **Preview**: `npx vite preview --port 3000`
 - **Git Rollback**: `git log -n 5`, `git checkout <hash>`
 
 ## 9. LAST SESSION HANDOFF (2026-08-02)
 - **Built & Verified**:
-  - Decompiled official MoEYS logo (`ChatGPT Image Aug 2, 2026, 02_34_45 PM.png`) into brand colors (`#002D62` Navy, `#0099E5` Cerulean, `#27AE60` Emerald).
-  - Saved official emblem to `public/images/hosanna-logo.png` and rendered in Navbar header & Footer.
-  - Implemented 8 complete sections: Navbar, Hero, Cycle of Blessing, Impact Calculator, Choir Spotlight with audio player (KESORRR feat.), Governance (Sydney Hosanna Inc), Location Hub, Footer with MoEYS marquee banner.
-  - Built DonateModal dialog with Australian (AUD/USD) & direct field contact options.
-  - Verified `npm run build` in 1.12s with zero TypeScript errors.
-- **Next Session**: Load `context/AGENT.md` → run `npx vite preview --port 3000` → ready for user updates.
-- **Ponytail Diff**: +8 components built / 0 unresolved bugs.
+  - Git initialized for `christpor/Hossana_school` (was not a repo); baseline committed to `main`, pushed.
+  - Redesign branch `redesign`: rebuilt all 8 sections in cream/navy editorial style + branded 404.
+  - Added GSAP + ScrollEffects orchestrator (Lenis `syncTouch:false`, parallax ≥768px, mask reveals, velocity marquee).
+  - Cycle of Blessing → sticky cinematic scroll story (CSS sticky, mobile-safe, reduced-motion unsticks).
+  - Recreated `docs/recreate-prompt.md` in elite format.
+  - Verified `npm run build` green, lint clean, DOM checks pass, 4-width screenshots in `.shots/`.
+- **Next Session**: Load `context/AGENT.md` → run `npx vite preview --port 3000` → wait for Christ's approval to merge `redesign` → `main`.
+- **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 0 unresolved bugs.
