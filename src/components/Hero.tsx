@@ -9,99 +9,89 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ t, onOpenDonate }) => {
   return (
-    <section id="story" className="relative min-h-[90vh] flex flex-col justify-between pt-12 pb-16 overflow-hidden bg-[#060B14]">
-      
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero.jpg"
-          alt="Hosanna School Students in Phnom Penh"
-          className="w-full h-full object-cover object-center opacity-25 scale-105 filter contrast-105 brightness-90 transform transition-transform duration-1000"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#060B14] via-[#060B14]/85 to-[#060B14]/50" />
-        <div className="absolute inset-0 bg-radial from-[#0099E5]/15 via-transparent to-transparent pointer-events-none" />
-      </div>
+    <section id="story" className="relative overflow-hidden bg-paper pt-32 pb-16 sm:pt-36">
+      {/* soft cerulean wash */}
+      <div className="pointer-events-none absolute -top-40 right-0 h-[480px] w-[480px] rounded-full bg-accent/10 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-64 h-[380px] w-[380px] rounded-full bg-sky/10 blur-3xl" />
 
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex-1 flex flex-col justify-center">
-        
-        {/* Official MoEYS Recognized Pill Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0D1B2A]/90 border border-[#0099E5]/40 text-[#46B2E6] text-xs sm:text-sm font-mono mb-8 backdrop-blur-md self-start shadow-xl shadow-[#0099E5]/10">
-          <ShieldCheck className="w-4 h-4 text-[#27AE60] animate-pulse" />
-          <span>{t.badge}</span>
-        </div>
-
-        {/* Big Display Headline */}
-        <div className="max-w-4xl mb-8">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-slate-100 leading-[1.1]">
-            {t.titleLine1}{' '}
-            <span className="font-serif italic text-[#0099E5] underline decoration-[#0099E5]/40 decoration-wavy underline-offset-8">
-              {t.titleHighlight}
-            </span>{' '}
-            {t.titleLine2}
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl font-sans leading-relaxed">
-            {t.subtitle}
-          </p>
-        </div>
-
-        {/* Dual CTAs */}
-        <div className="flex flex-wrap items-center gap-4 mb-16">
-          <button
-            onClick={onOpenDonate}
-            className="flex items-center gap-3 bg-gradient-to-r from-[#0099E5] via-[#46B2E6] to-[#002D62] hover:from-[#46B2E6] hover:to-[#0099E5] text-white font-bold px-8 py-4 rounded-full shadow-2xl shadow-[#0099E5]/30 text-base sm:text-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 border border-[#0099E5]/40"
-          >
-            <Heart className="w-5 h-5 fill-white" />
-            <span>{t.ctaDonate}</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
-          
-          <a
-            href="#blessing"
-            className="flex items-center gap-2 px-8 py-4 rounded-full bg-[#0D1B2A]/80 hover:bg-[#0D1B2A] border border-[#0099E5]/30 text-slate-200 hover:text-[#0099E5] font-semibold text-base backdrop-blur-md transition-all"
-          >
-            <span>{t.ctaStory}</span>
-          </a>
-        </div>
-
-        {/* Impact Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-[#0099E5]/20">
-          
-          <div className="glass-card p-5 rounded-2xl border border-[#0099E5]/20">
-            <div className="flex items-center gap-3 mb-2 text-[#0099E5]">
-              <Users className="w-5 h-5" />
-              <span className="text-3xl font-mono font-bold text-slate-100">{t.stats.students}</span>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          {/* Copy */}
+          <div className="lg:col-span-7">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3.5 py-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald" />
+              <span className="eyebrow text-ink-soft">{t.badge}</span>
             </div>
-            <p className="text-xs text-slate-400 font-medium">{t.stats.studentsLabel}</p>
+
+            <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.03em] text-ink sm:text-6xl lg:text-7xl">
+              {t.titleLine1}{' '}
+              <span className="font-display accent-underline">{t.titleHighlight}</span>{' '}
+              {t.titleLine2}
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+              {t.subtitle}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <button
+                onClick={onOpenDonate}
+                className="group flex h-12 items-center gap-2.5 rounded-full bg-deep px-7 text-sm font-bold text-white transition-all hover:bg-accent"
+              >
+                <Heart className="h-4 w-4 fill-current" />
+                {t.ctaDonate}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+              <a
+                href="#blessing"
+                className="flex h-12 items-center gap-2 rounded-full border border-line bg-surface px-7 text-sm font-semibold text-ink transition-all hover:border-accent hover:text-accent"
+              >
+                {t.ctaStory}
+              </a>
+            </div>
           </div>
 
-          <div className="glass-card p-5 rounded-2xl border border-[#0099E5]/20">
-            <div className="flex items-center gap-3 mb-2 text-[#0099E5]">
-              <Calendar className="w-5 h-5" />
-              <span className="text-3xl font-mono font-bold text-slate-100">{t.stats.years}</span>
+          {/* Photo frame */}
+          <div className="lg:col-span-5">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-[2rem] border border-accent/20" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line bg-surface">
+                <img
+                  src="/images/hero.jpg"
+                  alt="Hosanna School Students in Phnom Penh"
+                  className="h-full w-full object-cover"
+                  loading="eager"
+                  width={640}
+                  height={800}
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-paper/90 to-transparent p-5 pt-16">
+                  <div className="flex items-center justify-between text-xs font-mono text-ink-soft">
+                    <span>Phnom Penh · Mean Chey</span>
+                    <span>Est. 2003</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-xs text-slate-400 font-medium">{t.stats.yearsLabel}</p>
           </div>
-
-          <div className="glass-card p-5 rounded-2xl border border-[#0099E5]/20">
-            <div className="flex items-center gap-3 mb-2 text-[#27AE60]">
-              <GraduationCap className="w-5 h-5" />
-              <span className="text-3xl font-mono font-bold text-slate-100">{t.stats.returnedTeachers}</span>
-            </div>
-            <p className="text-xs text-slate-400 font-medium">{t.stats.returnedTeachersLabel}</p>
-          </div>
-
-          <div className="glass-card p-5 rounded-2xl border border-[#0099E5]/20">
-            <div className="flex items-center gap-3 mb-2 text-[#27AE60]">
-              <ShieldCheck className="w-5 h-5" />
-              <span className="text-3xl font-mono font-bold text-slate-100">{t.stats.subsidy}</span>
-            </div>
-            <p className="text-xs text-slate-400 font-medium">{t.stats.subsidyLabel}</p>
-          </div>
-
         </div>
 
+        {/* Stats strip */}
+        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-4">
+          {[
+            { icon: Users, value: t.stats.students, label: t.stats.studentsLabel },
+            { icon: Calendar, value: t.stats.years, label: t.stats.yearsLabel },
+            { icon: GraduationCap, value: t.stats.returnedTeachers, label: t.stats.returnedTeachersLabel },
+            { icon: ShieldCheck, value: t.stats.subsidy, label: t.stats.subsidyLabel },
+          ].map((stat, idx) => (
+            <div key={idx} className="bg-surface p-5 sm:p-6">
+              <stat.icon className="mb-3 h-5 w-5 text-accent" />
+              <div className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                {stat.value}
+              </div>
+              <div className="mt-1 text-xs leading-relaxed text-muted">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
