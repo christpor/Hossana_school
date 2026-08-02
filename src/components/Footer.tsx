@@ -1,123 +1,110 @@
 import React from 'react';
 import type { TranslationContent } from '../types';
-import { Heart, ExternalLink, Globe, Share2 } from 'lucide-react';
+import { ExternalLink, Globe, Heart, Share2 } from 'lucide-react';
 
 interface FooterProps {
   t: TranslationContent['footer'];
 }
 
 export const Footer: React.FC<FooterProps> = ({ t }) => {
+  const marqueeItems = [
+    'Hosanna School for Cambodian Children',
+    'Recognized by MoEYS',
+    'Hope School (희망학교)',
+    'Phnom Penh, Cambodia',
+    '800+ Students (ECE to Grade 12)',
+    'Founded 2003 in Sombok Chab',
+    'Mean Chey Village',
+    'Sydney Hosanna Inc Partner',
+  ];
+
   return (
-    <footer className="bg-[#060B14] border-t border-[#0099E5]/20 pt-12 pb-16 relative overflow-hidden">
-      
-      {/* Marquee Banner */}
-      <div className="w-full overflow-hidden whitespace-nowrap border-y border-[#0099E5]/15 bg-[#0D1B2A]/60 py-3 mb-12">
-        <div className="inline-block animate-marquee font-mono text-xs text-[#0099E5] uppercase tracking-widest space-x-8">
-          <span>HOSANNA SCHOOL FOR CAMBODIAN CHILDREN</span>
-          <span>•</span>
-          <span>RECOGNIZED BY MINISTRY OF EDUCATION YOUTH AND SPORT (MoEYS)</span>
-          <span>•</span>
-          <span>HOPE SCHOOL (희망학교)</span>
-          <span>•</span>
-          <span>PHNOM PENH, CAMBODIA</span>
-          <span>•</span>
-          <span>800+ STUDENTS (ECE TO GRADE 12)</span>
-          <span>•</span>
-          <span>FOUNDED 2003 IN SOMBOK CHAB</span>
-          <span>•</span>
-          <span>MEAN CHEY VILLAGE</span>
-          <span>•</span>
-          <span>SYDNEY HOSANNA INC PARTNER</span>
+    <footer className="relative border-t border-line bg-paper">
+      {/* Marquee strip */}
+      <div className="overflow-hidden border-b border-line bg-surface py-5" data-marquee>
+        <div className="flex whitespace-nowrap" data-marquee-track>
+          {[...marqueeItems, ...marqueeItems].map((item, idx) => (
+            <span key={idx} className="mx-6 flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-ink/60">
+              {item}
+              <span className="text-accent">✦</span>
+            </span>
+          ))}
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[#0099E5]/15">
-          
-          {/* Brand Info (6 cols) */}
-          <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full bg-[#002D62] border border-[#0099E5]/40 p-1 shadow-lg shadow-[#0099E5]/20 overflow-hidden flex items-center justify-center shrink-0">
-                <img
-                  src="/images/hosanna-logo.png"
-                  alt="Hosanna School Official Emblem"
-                  className="w-full h-full object-contain filter drop-shadow"
-                />
+      {/* Main footer block */}
+      <div className="bg-deep py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-12">
+            {/* Brand */}
+            <div className="md:col-span-6">
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-deep p-1">
+                  <img
+                    src="/images/hosanna-logo.png"
+                    alt="Hosanna School Official Emblem"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="block text-lg font-bold tracking-wide text-white">HOSANNA SCHOOL</span>
+                  <span className="eyebrow text-accent">Ministry of Education · MoEYS Recognized</span>
+                </div>
               </div>
-              <div>
-                <span className="font-bold text-lg text-slate-100 tracking-wide block">
-                  HOSANNA SCHOOL
-                </span>
-                <span className="text-xs font-mono text-[#0099E5]">
-                  Ministry of Education Youth and Sport Recognized
-                </span>
-              </div>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-white/70">{t.tagline}</p>
+              <p className="eyebrow mt-4 text-sky">{t.founders}</p>
             </div>
 
-            <p className="text-sm text-slate-400 max-w-md font-sans leading-relaxed">
-              {t.tagline}
-            </p>
-            <p className="text-xs font-mono text-[#46B2E6]">
-              {t.founders}
-            </p>
-          </div>
+            {/* Navigation */}
+            <div className="md:col-span-3">
+              <span className="eyebrow mb-4 block text-white/60">Navigation</span>
+              <ul className="space-y-2.5 text-sm text-white/70">
+                <li><a href="#story" className="transition-colors hover:text-accent">Our Journey</a></li>
+                <li><a href="#blessing" className="transition-colors hover:text-accent">Cycle of Blessing</a></li>
+                <li><a href="#choir" className="transition-colors hover:text-accent">Hosanna Choir</a></li>
+                <li><a href="#impact" className="transition-colors hover:text-accent">Micro-Donation Calculator</a></li>
+                <li><a href="#location" className="transition-colors hover:text-accent">Campus Location</a></li>
+              </ul>
+            </div>
 
-          {/* Quick Links (3 cols) */}
-          <div className="md:col-span-3 space-y-3 text-xs font-mono">
-            <span className="text-slate-300 uppercase tracking-widest block font-bold">
-              Navigation
-            </span>
-            <ul className="space-y-2 text-slate-400">
-              <li><a href="#story" className="hover:text-[#0099E5]">Our Journey</a></li>
-              <li><a href="#blessing" className="hover:text-[#0099E5]">Cycle of Blessing</a></li>
-              <li><a href="#choir" className="hover:text-[#0099E5]">Hosanna Choir</a></li>
-              <li><a href="#impact" className="hover:text-[#0099E5]">Micro-Donation Calculator</a></li>
-              <li><a href="#location" className="hover:text-[#0099E5]">Campus Location</a></li>
-            </ul>
-          </div>
-
-          {/* Social & Partners (3 cols) */}
-          <div className="md:col-span-3 space-y-3 text-xs font-mono">
-            <span className="text-slate-300 uppercase tracking-widest block font-bold">
-              Verified Footprint
-            </span>
-            <div className="space-y-2">
-              <a
-                href="https://www.facebook.com/hosannaschool/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-400 hover:text-[#0099E5] transition-colors"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-                <span>Facebook Community</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-
-              <a
-                href="https://sydneyhosanna.com.au/cambodia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-400 hover:text-[#0099E5] transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>Sydney Hosanna Australia</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
+            {/* Verified footprint */}
+            <div className="md:col-span-3">
+              <span className="eyebrow mb-4 block text-white/60">Verified footprint</span>
+              <div className="space-y-2.5">
+                <a
+                  href="https://www.facebook.com/hosannaschool/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-accent"
+                >
+                  <Share2 className="h-3.5 w-3.5" />
+                  Facebook Community
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+                <a
+                  href="https://sydneyhosanna.com.au/cambodia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-accent"
+                >
+                  <Globe className="h-3.5 w-3.5" />
+                  Sydney Hosanna Australia
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
             </div>
           </div>
 
-        </div>
-
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
-          <p>{t.copyright}</p>
-          <div className="flex items-center gap-1 text-[#0099E5]">
-            <span>Crafted with</span>
-            <Heart className="w-3 h-3 fill-current text-[#27AE60]" />
-            <span>for Phnom Penh</span>
+          <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-xs text-white/50 sm:flex-row">
+            <p>{t.copyright}</p>
+            <div className="flex items-center gap-1.5 text-accent">
+              <span>Crafted with</span>
+              <Heart className="h-3 w-3 fill-current text-emerald" />
+              <span>for Phnom Penh</span>
+            </div>
           </div>
         </div>
       </div>
-
     </footer>
   );
 };

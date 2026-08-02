@@ -8,71 +8,59 @@ interface GovernanceProps {
 
 export const Governance: React.FC<GovernanceProps> = ({ t }) => {
   return (
-    <section className="py-24 relative bg-[#060B14] border-t border-[#0099E5]/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="glass-card rounded-3xl p-8 sm:p-12 border border-[#0099E5]/30 relative overflow-hidden bg-gradient-to-br from-[#0D1B2A]/90 to-[#060B14]">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
-            {/* Left Content (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0099E5]/10 border border-[#0099E5]/30 text-[#0099E5] text-xs font-mono">
-                <ShieldCheck className="w-4 h-4 text-[#27AE60]" />
-                <span>{t.badge}</span>
+    <section className="relative border-t border-line bg-surface py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-[2.5rem] border border-line bg-deep p-8 sm:p-14">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+            {/* Left — trust copy */}
+            <div className="lg:col-span-7">
+              <div className="mb-4 inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5">
+                <ShieldCheck className="mr-2 h-3.5 w-3.5 text-emerald" />
+                <span className="eyebrow text-white">{t.badge}</span>
               </div>
-
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-100">
-                {t.title}
+              <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl">
+                {t.title}{' '}
+                <span className="font-display accent-underline">Sydney Hosanna Inc</span>
               </h2>
-
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
                 {t.subtitle}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {t.points.map((point, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-[#060B14]/60 border border-[#0099E5]/20">
-                    <CheckCircle2 className="w-5 h-5 text-[#27AE60] shrink-0" />
-                    <span className="text-xs sm:text-sm font-medium text-slate-200">{point}</span>
+                  <div key={idx} className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/5 p-3.5">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald" />
+                    <span className="text-sm text-white/85">{point}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right Card Callout (5 cols) */}
+            {/* Right — partner callout */}
             <div className="lg:col-span-5">
-              <div className="p-8 rounded-2xl bg-[#0D1B2A]/95 border border-[#0099E5]/40 text-center space-y-6 shadow-2xl">
-                <div className="w-14 h-14 rounded-2xl bg-[#002D62] border border-[#0099E5]/40 flex items-center justify-center text-[#0099E5] mx-auto">
-                  <Globe2 className="w-7 h-7" />
+              <div className="rounded-3xl border border-white/15 bg-white/5 p-8 text-center">
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/15 text-accent">
+                  <Globe2 className="h-7 w-7" />
                 </div>
-
-                <div>
-                  <span className="text-xs font-mono text-[#0099E5] uppercase tracking-widest block mb-1">
-                    Primary International Engine
-                  </span>
-                  <h3 className="text-xl font-bold text-slate-100">{t.australianPartner}</h3>
-                  <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                    Registered Australian NGO sustaining field trips, school infrastructure, and student subsidies.
-                  </p>
-                </div>
-
+                <span className="eyebrow mb-2 block text-accent">Primary international engine</span>
+                <h3 className="text-xl font-bold text-white">{t.australianPartner}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-white/60">
+                  Registered Australian NGO sustaining field trips, school infrastructure, and
+                  student subsidies.
+                </p>
                 <a
                   href="https://sydneyhosanna.com.au/cambodia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-[#0099E5] to-[#002D62] hover:from-[#46B2E6] hover:to-[#0099E5] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-[#0099E5]/20 border border-[#0099E5]/40"
+                  className="mt-6 flex h-11 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-bold text-deep transition-colors hover:bg-accent hover:text-white"
                 >
-                  <span>{t.ctaButton}</span>
-                  <ExternalLink className="w-4 h-4" />
+                  {t.ctaButton}
+                  <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

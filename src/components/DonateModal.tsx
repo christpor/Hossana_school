@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Heart, ShieldCheck, ExternalLink, Phone } from 'lucide-react';
 import type { Language } from '../types';
 
@@ -11,45 +11,62 @@ interface DonateModalProps {
 export const DonateModal: React.FC<DonateModalProps> = ({ isOpen, onClose, lang }) => {
   const [selectedAmount, setSelectedAmount] = useState<number | 'custom'>(30);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', onKey);
+    }
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#060B14]/85 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 border border-[#0099E5]/40 shadow-2xl bg-[#0D1B2A]">
-        
-        {/* Close Button */}
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-deep/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-lg rounded-3xl border border-line bg-surface p-6 shadow-2xl sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-[#060B14] text-slate-400 hover:text-[#0099E5] hover:bg-slate-800 transition-colors"
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+          aria-label="Close dialog"
         >
-          <X className="w-5 h-5" />
+          <X className="h-4 w-4" />
         </button>
 
-        {/* Modal Header */}
-        <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-[#0099E5]/15 border border-[#0099E5]/30 flex items-center justify-center text-[#0099E5] mx-auto mb-3">
-            <Heart className="w-6 h-6 fill-current text-[#27AE60]" />
+        <div className="mb-6 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+            <Heart className="h-6 w-6 fill-current text-emerald" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-100">
+          <h3 className="text-2xl font-bold text-ink">
             {lang === 'en' ? 'Sponsor a Student at Hosanna' : 'ឧបត្ថម្ភសិស្សនៅសាលាហូសាណា'}
           </h3>
-          <p className="text-xs text-slate-400 mt-1 font-sans">
+          <p className="mt-1 text-xs text-muted">
             {lang === 'en'
               ? 'Flatten micro-costs of printing, uniforms & water in Mean Chey'
               : 'លុបបំបាត់ចំណាយតូចៗលើឯកសណ្ឋាន ទឹកស្អាត និងសន្លឹកកិច្ចការ'}
           </p>
         </div>
 
-        {/* Amount Selector */}
-        <div className="grid grid-cols-3 gap-3 mb-6">
+        <div className="mb-6 grid grid-cols-3 gap-3">
           {[15, 30, 100].map((amt) => (
             <button
               key={amt}
               onClick={() => setSelectedAmount(amt)}
-              className={`py-3 rounded-2xl border font-mono font-bold text-sm transition-all ${
+              className={`h-12 rounded-2xl border font-mono text-sm font-bold transition-all ${
                 selectedAmount === amt
-                  ? 'bg-gradient-to-r from-[#0099E5] to-[#002D62] text-white border-[#0099E5] shadow-md'
-                  : 'bg-[#060B14] text-slate-300 border-[#0099E5]/20 hover:border-[#0099E5]/40'
+                  ? 'border-deep bg-deep text-white shadow-md'
+                  : 'border-line bg-paper text-ink hover:border-accent'
               }`}
             >
               ${amt}/mo
@@ -57,54 +74,49 @@ export const DonateModal: React.FC<DonateModalProps> = ({ isOpen, onClose, lang 
           ))}
         </div>
 
-        {/* Direct Action Options */}
         <div className="space-y-4">
-          
           <a
             href="https://sydneyhosanna.com.au/cambodia"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#0099E5] to-[#002D62] hover:from-[#46B2E6] hover:to-[#0099E5] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-between shadow-lg shadow-[#0099E5]/25 border border-[#0099E5]/40 group transition-all"
+            className="group flex h-14 w-full items-center justify-between rounded-2xl bg-deep px-6 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-accent"
           >
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#27AE60]" />
-              <span>Donate via Sydney Hosanna (AUD / USD)</span>
-            </div>
-            <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-emerald" />
+              Donate via Sydney Hosanna (AUD / USD)
+            </span>
+            <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
 
-          <div className="p-4 rounded-2xl bg-[#060B14]/80 border border-[#0099E5]/20 text-left text-xs space-y-2">
-            <span className="font-mono text-[#0099E5] font-bold block">
-              Direct Cambodian Field Office Inquiries:
+          <div className="rounded-2xl border border-line bg-paper p-4 text-left text-xs">
+            <span className="eyebrow mb-1 block text-accent">
+              Direct Cambodian field office inquiries
             </span>
-            <p className="text-slate-300">
+            <p className="text-muted">
               For local wire transfers or school visits, contact missionaries directly:
             </p>
-            <div className="flex flex-wrap gap-2 pt-1 font-mono text-slate-200">
-              <a href="tel:+85512203073" className="flex items-center gap-1 hover:text-[#0099E5]">
-                <Phone className="w-3 h-3 text-[#0099E5]" />
+            <div className="mt-2 flex flex-wrap gap-2 font-mono text-ink">
+              <a href="tel:+85512203073" className="flex items-center gap-1 transition-colors hover:text-accent">
+                <Phone className="h-3 w-3 text-accent" />
                 +855 12 203 073
               </a>
-              <span>•</span>
-              <a href="tel:+85512668077" className="flex items-center gap-1 hover:text-[#0099E5]">
-                <Phone className="w-3 h-3 text-[#0099E5]" />
+              <span className="text-muted">•</span>
+              <a href="tel:+85512668077" className="flex items-center gap-1 transition-colors hover:text-accent">
+                <Phone className="h-3 w-3 text-accent" />
                 +855 12 668 077
               </a>
             </div>
           </div>
-
         </div>
 
-        {/* Modal Footer */}
-        <div className="mt-6 text-center border-t border-[#0099E5]/15 pt-4">
+        <div className="mt-6 border-t border-line pt-4 text-center">
           <button
             onClick={onClose}
-            className="text-xs font-mono text-slate-400 hover:text-slate-200 underline"
+            className="font-mono text-xs text-muted underline-offset-2 hover:text-ink hover:underline"
           >
-            Close Dialog
+            Close dialog
           </button>
         </div>
-
       </div>
     </div>
   );
