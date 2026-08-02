@@ -54,5 +54,7 @@
   - Light-trimmed long paragraphs across sections (kept all real facts: 800+, MoEYS, KESORRR, 2003).
   - Added 2 real school photos (sydneyhosanna.com.au/cambodia) into Hero + LocationHub; AI placeholders kept in git history.
   - Screenshots regenerated via Windows Chrome headless (`"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" --headless --screenshot=...`).
-- **Next Session**: Load `context/AGENT.md` → run `npx vite preview --port 3000` → wait for Christ's approval to merge `redesign` → `main`.
-- **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 0 unresolved bugs.
+- **Navbar compacted (uncommitted, `redesign`)**:
+  - Christ: navbar "looked too big". Applied Option A: pill `max-w-5xl→4xl`, logo `h-10→h-8`, dropped "Cambodian Children · Est. 2003" subtitle, nav links `text-sm→13px` tighter, buttons `h-10→h-8`, drawer top `72px→56px`. Build green. Dev server at `localhost:5173`.
+- **Next Session**: Load `context/AGENT.md` → dev server already running at `localhost:5173` → confirm navbar size with Christ → commit navbar change + push to `redesign` → wait for approval to merge `redesign` → `main`.
+- **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 1 compacted navbar / 0 unresolved bugs.
