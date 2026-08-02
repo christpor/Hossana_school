@@ -18,9 +18,10 @@
 
 ## 5. CURRENT STATE
 - **Branch**: `redesign` (new cream/navy editorial design, awaiting Christ approval to merge to `main`)
-- **Build Status**: `npm run build` PASSED (~1s, 0 TS errors) | Lint clean
+- **Build Status**: `npm run build` PASSED (~3s, 0 TS errors) | Lint clean
 - **Remote**: `christpor/Hossana_school` (main + redesign pushed, commits visible)
-- **Assets**: Official logo (`public/images/hosanna-logo.png`), hero (`hero.jpg`), choir (`choir.jpg`), teacher (`teacher.jpg`). Branded `public/404.html`.
+- **Assets**: Official logo (`public/images/hosanna-logo.png`), real school photos (`real-students-hero.jpg`, `real-assembly-campus.jpg` — sourced from sydneyhosanna.com.au/cambodia), AI placeholders still present (`hero.jpg`, `choir.jpg`, `teacher.jpg`). Branded `public/404.html`.
+- **Location (confirmed by Christ 2026-08-02)**: Pou Senchey District, Phnom Penh — Google pin `maps.app.goo.gl/CwM5fNPkbwsSCpiF6`, lat 11.5651 / long 104.8514. This supersedes LAWS.md's Mean Chey coords (11.5432, 104.8876).
 
 ## 6. NEXT TASKS
 1. Christ previews redesign → on approval, merge `redesign` → `main` + push.
@@ -48,5 +49,10 @@
   - Cycle of Blessing → sticky cinematic scroll story (CSS sticky, mobile-safe, reduced-motion unsticks).
   - Recreated `docs/recreate-prompt.md` in elite format.
   - Verified `npm run build` green, lint clean, DOM checks pass, 4-width screenshots in `.shots/`.
+- **Location + copy + real photos (commit `8d95b5f`, pushed)**:
+  - Christ corrected location: **Pou Senchey, Phnom Penh** (`maps.app.goo.gl/CwM5fNPkbwsSCpiF6`, 11.5651, 104.8514). Updated `content.ts` EN/KH + `LocationHub.tsx` (map card now shows real campus photo + correct coords + Google Maps link).
+  - Light-trimmed long paragraphs across sections (kept all real facts: 800+, MoEYS, KESORRR, 2003).
+  - Added 2 real school photos (sydneyhosanna.com.au/cambodia) into Hero + LocationHub; AI placeholders kept in git history.
+  - Screenshots regenerated via Windows Chrome headless (`"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" --headless --screenshot=...`).
 - **Next Session**: Load `context/AGENT.md` → run `npx vite preview --port 3000` → wait for Christ's approval to merge `redesign` → `main`.
 - **Ponytail Diff**: -2 dead files (App.css, src/assets) / 9 rebuilt sections / 0 unresolved bugs.
